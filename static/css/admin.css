@@ -1,0 +1,67 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+h1 {
+    color: #333;
+    text-align: center;
+    margin-top: 30px;
+}
+
+ul {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 20px;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+/* Estilos para os formulários DELETE e PUT */
+form {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+/* Estilos para os botões Excluir e Atualizar */
+button {
+    padding: 8px 16px;
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #c82333;
+}
+
+input[type="text"] {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-right: 10px;
+}
+
+/* Estilos para o link "Voltar ao Login" */
+.login-link {
+    display: block;
+    margin-top: 20px;
+    text-align: center;
+    color: #007bff;
+    text-decoration: none;
+}
+
+.login-link:hover {
+    text-decoration: underline;
+}

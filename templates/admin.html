@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel Administrativo - Usuários</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">
+</head>
+<body>
+    <h1>Painel Administrativo - Lista de Usuários</h1>
+    
+    <ul>
+        {% for user in users %}
+        <li>ID: {{ user.id }} | Usuário: {{ user.username }}
+            <!-- Formulário para DELETE -->
+            <form action="/admin" method="POST">
+                <input type="hidden" name="_method" value="DELETE">
+                <input type="hidden" name="user_id" value="{{ user.id }}">
+                <button type="submit">Excluir</button>
+            </form>
+
+            <!-- Formulário para PUT (atualização) -->
+            <form action="/admin" method="POST">
+                <input type="hidden" name="_method" value="PUT">
+                <input type="hidden" name="user_id" value="{{ user.id }}">
+                <input type="text" name="new_username" placeholder="Novo nome de usuário">
+                <button type="submit">Atualizar</button>
+            </form>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

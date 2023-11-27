@@ -68,6 +68,27 @@ def login():
             error = 'Credenciais inválidas. Tente novamente.'
     return render_template('login.html', error=error)
 
+@app.route('/admin', methods=['GET', 'POST'])
+def admin_panel():
+    if request.method == 'POST':
+        if request.form['_method'] == 'DELETE':
+            user_id = int(request.form['user_id'])
+            user_to_delete = User.query.get_or_404(user_id)
+            db.session.delete(user_to_delete)
+            db.session.commit()
+            return redirect(url_for('admin_panel'))
+        
+        elif request.form['_method'] == 'PUT':
+            user_id = int(request.form['user_id'])
+            user_to_update = User.query.get_or_404(user_id)
+            new_username = request.form['new_username']
+            user_to_update.username = new_username
+            db.session.commit()
+            return redirect(url_for('admin_panel'))
+        
+    users = User.query.all()
+    return render_template('admin.html', users=users)
+
 @app.route('/')
 def index():
     return render_template('index.html')
