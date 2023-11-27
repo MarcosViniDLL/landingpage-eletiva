@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>MV Fitness</title>
+</head>
+<body>
+    <header>
+        <div class="logo-title">
+            <h1>MV</h1>
+            <h1>Fitness</h1>
+        </div>
+        <ul>
+            <a href="#"><li>Início</li></a>
+            <a href="#"><li>Nossos Planos</li></a>
+            <a href="#"><li>Localização</li></a>
+            <a href="#"><li>Contato</li></a>
+            <a href="{{ url_for('login') }}"><li>Entrar</li></a>
+        </ul>
+    </header>
+
+    <main>
+        <aside>
+            <h2><span>Faça seu cadastro</span></h2>
+            <h2>agora mesmo!</h2>
+            <p>Faça sua inscrição na academia MV Fitness para alcançar seus objetivos de condicionamento físico e transformar seu estilo de vida. Nossa equipe dedicada e instalações de ponta garantem resultados duradouros.</p>
+            <form action="{{ url_for('register') }}" method="GET">
+                <input type="text" placeholder="Nome completo">
+                <input type="email" placeholder="Email">
+                <input type="submit" value="Continuar">
+            </form>
+        </aside>
+    </main>
+
+    <h2 class="h2-middle">Conheça nossos planos!</h2>
+
+    <section class="secao-valores">
+        <div class="plano-basic">
+            <h3>Plano Mensal</h3>
+            <p>R$ 89,90</p>
+            <a href="{{ url_for('beneficios_mensal') }}"><button>Conheça os benefícios</button></a>
+        </div>
+        <div class="plano-family">
+            <h3>Plano Família</h3>
+            <p>R$ 69,90</p>
+            <a href="{{ url_for('beneficios_familia') }}"><button>Conheça os benefícios</button></a>
+        </div>
+        <div class="plano-anual">
+            <h3>Plano anual</h3>
+            <p>R$ 65,90</p>
+            <a href="{{ url_for('beneficios_anual') }}"><button>Conheça os benefícios</button></a>
+        </div>
+    </section>
+
+    <h2 class="h2-middle-footer">Localização</h2>
+
+    <section class="secao-localizacao">
+        <div class="endereco">
+            <h3>Endereço:</h3>
+            <p>Rua ABC, 123 - Bairro da Saúde - Everpark</p>
+            <p>CEP: 12345-678</p>
+            <button>Acessar no Google Maps</button>
+    </section>
+
+    <h2 class="h2-contact">Contato</h2>
+
+    <section class="secao-contato">
+        <div class="info-contato">
+            <div class="instagram">
+                <i class="fa-brands fa-instagram"> @fitnessacademia</i>
+            </div>
+            <div class="whatsapp">
+                <i class="fa-brands fa-whatsapp"> (00) 90012-3465</i>
+            </div>
+        </div>
+    </section>
+</body>
+<script src="script.js"></script>
+</html>

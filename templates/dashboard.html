@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+
+</head>
+<body>
+    <h1>Perfis de Usuários</h1>
+
+    <div class="profiles">
+        {% for user in users %}
+            <div class="profile">
+                <h3>Usuário: {{ user.username }}</h3>
+                <p>CPF: {{ user.cpf }}</p>
+                <p>Data de Nascimento: {{ user.birth_date }}</p>
+
+                <!-- Formulário para adicionar treino -->
+                <form action="{{ url_for('add_training') }}" method="POST">
+                    <h4>Adicionar Treino</h4>
+                    <input type="text" name="training_name" placeholder="Nome do Treino">
+                    <input type="submit" value="Adicionar Treino">
+                </form>
+
+                <!-- Formulário para adicionar dieta -->
+                <form action="{{ url_for('add_diet') }}" method="POST">
+                    <h4>Adicionar Dieta</h4>
+                    <input type="text" name="diet_name" placeholder="Nome da Dieta">
+                    <input type="submit" value="Adicionar Dieta">
+                </form>
+
+                <!-- Formulário para adicionar avaliação física -->
+                <form action="{{ url_for('add_physical_assessment') }}" method="POST">
+                    <h4>Adicionar Avaliação Física</h4>
+                    <input type="text" name="weight" placeholder="Peso">
+                    <input type="text" name="height" placeholder="Altura">
+                    <input type="submit" value="Adicionar Avaliação Física">
+                </form>
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>

@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+
+* {
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #222222;
+    color: #fff;
+    font-family: 'Poppins';
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 15px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 200;
+}
+
+form {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #FBA82F;
+    border-radius: 10px;
+    background-color: #222222;
+}
+
+label {
+    color: #fff;
+}
+
+input[type="text"], input[type="password"], input[type="date"], input[type="submit"] {
+    display: block;
+    width: 100%;
+    margin-bottom: 15px;
+    color: #2e2c2c;
+}
+
+input[type="submit"] {
+    height: 50px;
+    background-color: #FBA82F;
+    color: #222222;
+    font-weight: bold;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+input[type="submit"]:hover {
+    background-color: #AF781D;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="date"] {
+    height: 40px;
+    padding: 10px;
+    border-radius: 20px;
+    border: none;
+    font-size: 14px;
+    color: #000; /* Definindo a cor do texto dentro dos inputs como preto */
+}
+
+/* Estilos específicos para a página de login */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+form {
+    width: 80%;
+}

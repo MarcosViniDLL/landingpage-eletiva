@@ -1,0 +1,207 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+
+*{
+    font-family: 'Poppins', sans-serif;
+}
+
+body{
+    background-color: #222222;
+    color: #fff;
+    font-family: 'Poppins';
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 15px;
+}
+
+header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.logo-title{
+    flex-direction: column;
+    line-height: 10px;
+}
+
+li{
+    display: inline-block;
+    margin: 20px;
+}
+
+a{
+    color: #FBA82F;
+}
+
+a:hover{
+    color: #fff;
+    transition: 0.4s all;
+}
+
+h1{
+    font-weight: 200;
+}
+
+main{
+    display: flex;
+    flex-direction: row;
+    margin-top: 200px;
+}
+
+h2{
+    font-size: 49px;
+    line-height: 10px;
+}
+
+span{
+    color: #FBA82F;
+}
+
+p{
+    line-height: 20px;
+    max-width: 500px;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    width: 68%;
+}
+
+form [type="submit"]{
+    height: 50px;
+    width: 50%;
+    background-color: #FBA82F;
+    color: black;
+    font-weight: bold;
+    margin-left: 26%;
+}
+
+form [type="submit"]:hover{
+    cursor: pointer;
+}
+
+input{
+    margin-top: 20px;
+    height: 20px;
+    padding: 15px;
+    border-radius: 20px;
+    border: none;
+    font-size: 14px;
+}
+
+img{
+    height: 500px;
+    margin-left: 100px;
+}
+
+.h2-middle{
+    margin-top: 100px;
+    text-align: center;
+}
+
+.secao-valores {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.plano-basic,
+.plano-family,
+.plano-anual {
+    border: 1px solid #FBA82F;
+    padding: 20px;
+    margin: 10px;
+    text-align: center;
+    width: calc(33.33% - 20px);
+    background-color: #222222;
+    box-sizing: border-box;
+    margin-top: 100px;
+}
+
+button {
+    background-color: #FBA82F;
+    color: #222222;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #AF781D;
+}
+
+.h2-middle-footer{
+    text-align: center;
+    margin-top: 100px;
+}
+
+.secao-localizacao{
+    text-align: center;
+    margin-top: 10px;
+}
+
+.secao-localizacao .endereco {
+    display: inline-block;
+  }
+  
+  .secao-localizacao .endereco h3,
+  .secao-localizacao .endereco p,
+  .secao-localizacao .endereco button {
+    margin: 0;
+  }
+  
+  .secao-localizacao .endereco button {
+    margin-top: 20px;
+  }
+
+.h2-contact{
+    text-align: center;
+    margin-top: 100px;
+  }
+
+  .secao-contato {
+    background-color: #222222;
+    padding: 20px;
+    text-align: center; 
+}
+
+
+.secao-contato h4 {
+    font-size: 24px;
+    color: #fff; 
+}
+
+
+.secao-contato p {
+    font-size: 16px;
+    color: #fff;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+
+.info-contato {
+    display: flex;
+    justify-content: center;
+}
+
+.instagram,
+.whatsapp {
+    margin: 0 10px;
+}
+
+.fa-instagram,
+.fa-whatsapp {
+    font-size: 15px;
+    color: #FBA82F;
+}
+
+.fa-brands {
+    font-family: 'Font Awesome 5 Brands';
+    font-weight: 400;
+}
