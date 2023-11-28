@@ -13,14 +13,14 @@
         {% for user in users %}
         <li>ID: {{ user.id }} | Usuário: {{ user.username }}
             <!-- Formulário para DELETE -->
-            <form action="/admin" method="POST">
+            <form action="/admin_panel" method="POST">
                 <input type="hidden" name="_method" value="DELETE">
                 <input type="hidden" name="user_id" value="{{ user.id }}">
                 <button type="submit">Excluir</button>
             </form>
 
             <!-- Formulário para PUT (atualização) -->
-            <form action="/admin" method="POST">
+            <form action="/admin_panel" method="POST">
                 <input type="hidden" name="_method" value="PUT">
                 <input type="hidden" name="user_id" value="{{ user.id }}">
                 <input type="text" name="new_username" placeholder="Novo nome de usuário">

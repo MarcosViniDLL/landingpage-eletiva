@@ -1,5 +1,6 @@
-from flask import Flask, render_template, request, redirect, url_for, flash
+from flask import Flask, render_template, request, redirect, url_for, flash, session
 from flask_sqlalchemy import SQLAlchemy
+from flask_migrate import Migrate
 from werkzeug.security import generate_password_hash, check_password_hash
 from datetime import datetime
 from flask import jsonify
@@ -11,6 +12,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY'] = 'your_secret_key_here'
 
 db = SQLAlchemy(app)
+migrate = Migrate(app, db)
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -18,17 +20,22 @@ class User(db.Model):
     password = db.Column(db.String(100), nullable=False)
     cpf = db.Column(db.String(14), unique=True, nullable=False)  # CPF no formato XXX.XXX.XXX-XX
     birth_date = db.Column(db.Date, nullable=False)
+    is_admin = db.Column(db.Boolean, default=False)
 
-    def __init__(self, username, password, cpf, birth_date):
+    def __init__(self, username, password, cpf, birth_date, is_admin=False):
         self.username = username
         self.password = password
         self.cpf = cpf
         self.birth_date = birth_date
+        self.is_admin = is_admin
 
 authenticated_user = {
     'username':'usuarioteste',
     'password':'senhateste'
 }
+
+def is_admin_authenticated():
+    return session.get('is_admin')
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
@@ -70,24 +77,44 @@ def login():
 
 @app.route('/admin', methods=['GET', 'POST'])
 def admin_panel():
+    if 'is_admin' in session and session['is_admin']:
+        if request.method == 'POST':
+            if request.form['_method'] == 'DELETE':
+                user_id = int(request.form['user_id'])
+                user_to_delete = User.query.get_or_404(user_id)
+                db.session.delete(user_to_delete)
+                db.session.commit()
+                return redirect(url_for('admin_panel'))
+
+            elif request.form['_method'] == 'PUT':
+                user_id = int(request.form['user_id'])
+                user_to_update = User.query.get_or_404(user_id)
+                new_username = request.form['new_username']
+                user_to_update.username = new_username
+                db.session.commit()
+                return redirect(url_for('admin_panel'))
+
+        users = User.query.all()
+        return render_template('admin.html', users=users)
+    else:
+        return redirect(url_for('admin_login'))
+
+
+@app.route('/admin_login', methods=['GET', 'POST'])
+def admin_login():
     if request.method == 'POST':
-        if request.form['_method'] == 'DELETE':
-            user_id = int(request.form['user_id'])
-            user_to_delete = User.query.get_or_404(user_id)
-            db.session.delete(user_to_delete)
-            db.session.commit()
+        admin_username = request.form['admin_username']
+        admin_password = request.form['admin_password']
+
+        if admin_username == 'admin' and admin_password == 'adminpassword':
+            session['is_admin'] = True
             return redirect(url_for('admin_panel'))
-        
-        elif request.form['_method'] == 'PUT':
-            user_id = int(request.form['user_id'])
-            user_to_update = User.query.get_or_404(user_id)
-            new_username = request.form['new_username']
-            user_to_update.username = new_username
-            db.session.commit()
-            return redirect(url_for('admin_panel'))
-        
-    users = User.query.all()
-    return render_template('admin.html', users=users)
+        else:
+            flash('Credenciais de administrador incorretas. Tente novamente.')
+
+            
+    return render_template('admin_login.html')
+
 
 @app.route('/')
 def index():
