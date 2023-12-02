@@ -36,6 +36,9 @@
                     <input type="text" name="height" placeholder="Altura">
                     <input type="submit" value="Adicionar Avaliação Física">
                 </form>
+                <form action="{{ url_for('logout') }}" method="POST">
+                    <button class="logout-btn" type="submit">Logout</button>
+                </form>
             </div>
         {% endfor %}
     </div>

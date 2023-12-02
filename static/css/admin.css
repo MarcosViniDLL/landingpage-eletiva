@@ -26,13 +26,13 @@ li {
     margin-bottom: 10px;
 }
 
-/* Estilos para os formulários DELETE e PUT */
+
 form {
     display: inline-block;
     margin-right: 10px;
 }
 
-/* Estilos para os botões Excluir e Atualizar */
+
 button {
     padding: 8px 16px;
     background-color: #dc3545;
@@ -53,7 +53,7 @@ input[type="text"] {
     margin-right: 10px;
 }
 
-/* Estilos para o link "Voltar ao Login" */
+
 .login-link {
     display: block;
     margin-top: 20px;

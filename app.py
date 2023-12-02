@@ -4,6 +4,7 @@ from flask_migrate import Migrate
 from werkzeug.security import generate_password_hash, check_password_hash
 from datetime import datetime
 from flask import jsonify
+from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
 
 
 app = Flask(__name__)
@@ -14,7 +15,10 @@ app.config['SECRET_KEY'] = 'your_secret_key_here'
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 
-class User(db.Model):
+login_manager = LoginManager(app)
+login_manager.login_view = 'login'
+
+class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(100), unique=True, nullable=False)
     password = db.Column(db.String(100), nullable=False)
@@ -28,6 +32,10 @@ class User(db.Model):
         self.cpf = cpf
         self.birth_date = birth_date
         self.is_admin = is_admin
+
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(int(user_id))
 
 authenticated_user = {
     'username':'usuarioteste',
@@ -70,10 +78,18 @@ def login():
         user = User.query.filter_by(username=username).first()
         
         if user and check_password_hash(user.password, password):
+            login_user(user)
             return redirect(url_for('dashboard'))
         else:
             error = 'Credenciais inválidas. Tente novamente.'
     return render_template('login.html', error=error)
+
+@app.route('/logout', methods=['POST'])
+@login_required
+def logout():
+    if 'is_admin' in session:
+        session.pop('is_admin')
+    return redirect(url_for('index'))
 
 @app.route('/admin', methods=['GET', 'POST'])
 def admin_panel():

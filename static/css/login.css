@@ -1,79 +1,66 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
 
-* {
-    font-family: 'Poppins', sans-serif;
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
+/* Arquivo CSS: login.css */
 
 body {
-    background-color: #222222;
-    color: #fff;
-    font-family: 'Poppins';
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 15px;
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
 }
 
-h1, h2, h3, h4, h5, h6 {
-    font-weight: 200;
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
 }
 
 form {
-    max-width: 500px;
+    max-width: 300px;
     margin: 0 auto;
+    background-color: #fff;
     padding: 20px;
-    border: 1px solid #FBA82F;
-    border-radius: 10px;
-    background-color: #222222;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 label {
-    color: #fff;
-}
-
-input[type="text"], input[type="password"], input[type="date"], input[type="submit"] {
     display: block;
-    width: 100%;
-    margin-bottom: 15px;
-    color: #2e2c2c;
-}
-
-input[type="submit"] {
-    height: 50px;
-    background-color: #FBA82F;
-    color: #222222;
+    margin-bottom: 5px;
     font-weight: bold;
-    border: none;
-    border-radius: 25px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-input[type="submit"]:hover {
-    background-color: #AF781D;
 }
 
 input[type="text"],
-input[type="password"],
-input[type="date"] {
-    height: 40px;
+input[type="password"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+input[type="submit"] {
+    width: 100%;
     padding: 10px;
-    border-radius: 20px;
+    background-color: #007bff;
+    color: white;
     border: none;
-    font-size: 14px;
-    color: #000; /* Definindo a cor do texto dentro dos inputs como preto */
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
 
-/* Estilos específicos para a página de login */
-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+input[type="submit"]:hover {
+    background-color: #0056b3;
 }
 
-form {
-    width: 80%;
+.admin-link {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    text-decoration: none;
+    color: #007bff;
+}
+
+.admin-link:hover {
+    text-decoration: underline;
 }
