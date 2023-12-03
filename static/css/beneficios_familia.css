@@ -49,3 +49,10 @@ li::before {
     width: 1em;
     margin-left: -1em;
 }
+
+@media screen and (max-width: 767px) {
+    
+    body {
+        font-size: 14px;
+    }
+}
